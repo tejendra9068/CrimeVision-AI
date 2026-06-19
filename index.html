@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CrimeVision AI – Intelligent Conversational Crime Analytics Platform for Police. Professional government-grade law enforcement intelligence command dashboard.">
+  <title>CrimeVision AI – Intelligent Conversational Crime Analytics Platform for Police</title>
+  
+  <!-- Modern Fonts (Futuristic Command Headers & Data Grids) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Leaflet Map CSS for Hotspot Maps (Dark skin supported) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  
+  <!-- Global Application CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon Mockup -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='%2300f0ff' stroke-width='2' fill='none'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path></svg>">
+</head>
+<body>
+
+  <!-- Root Mounting Node -->
+  <div id="app-root">
+    <div class="flex-center-content" style="height: 100vh; flex-direction: column; gap: 15px; font-family: 'Orbitron', sans-serif; background: #030616;">
+      <div style="font-size: 20px; color: #00f0ff; letter-spacing: 2px;">LOADING CYBER COMMAND CORE...</div>
+      <div style="width: 200px; height: 2px; background: rgba(0, 240, 255, 0.1); border-radius: 1px; overflow: hidden; position: relative;">
+        <div style="width: 60px; height: 100%; background: #00f0ff; position: absolute; left: -60px; animation: loading-bar-move 1.5s infinite linear;"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes loading-bar-move {
+      0% { left: -60px; }
+      100% { left: 200px; }
+    }
+  </style>
+
+  <!-- External CDNs (Required for Data Visualization, Maps, Graphs, and Exports) -->
+  <!-- Leaflet Map Library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Chart.js for Visual Statistics Plots -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Cytoscape.js for Neo4j Network Graph Visualisation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+  
+  <!-- html2pdf.js for Conversation Log Exporting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Core Application Modules -->
+  <script src="mockData.js"></script>
+  <script src="utils.js"></script>
+  <script src="components.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Mount Application -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Small check to verify libraries have loaded correctly before boot
+      setTimeout(function() {
+        if (window.app) {
+          app.init();
+        } else {
+          console.error("CrimeVision AI App Script failed to register properly.");
+          document.getElementById("app-root").innerHTML = "<div style='color:red; text-align:center; padding:50px;'>CRITICAL LOADING ERROR: app.js not found.</div>";
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>
